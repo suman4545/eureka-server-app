@@ -1,17 +1,16 @@
 spring:
   application:
-    name: swimming-pool-discovery-client
+    name: eurekaapp
 server:
   port: 8761
+
 eureka:
   instance:
-    leaseRenewalIntervalInSeconds: 10
+    health-check-url: ${HOST_IP}:${EXPOSED_PORT}/actuator/health
+    preferIpAddress: 'true'
+    ip-address: ${HOST_IP}
+    hostname: ${HOST_NAME}
+    non-secure-port: ${EXPOSED_PORT}
     metadataMap:
-      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
-  client:
-    region: default
-    registryFetchIntervalSeconds: 5
-    availabilityZones: 
-      default: ${APPLICATION_DOMAIN:${DOMAIN:defaultZone}}
-    serviceUrl:
-      defaultZone: ${vcap.services.sessionqaeureka.credentials.uri:http://localhost:8761/eureka/}
+      management:
+        port: ${EXPOSED_PORT}
