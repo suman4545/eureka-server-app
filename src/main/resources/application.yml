@@ -1,16 +1,16 @@
-spring:
-  application:
-    name: eurekaapp
 server:
   port: 8761
 
 eureka:
-  instance:
-    health-check-url: ${HOST_IP}:${EXPOSED_PORT}/actuator/health
-    preferIpAddress: 'true'
-    ip-address: ${HOST_IP}
-    hostname: ${HOST_NAME}
-    non-secure-port: ${EXPOSED_PORT}
-    metadataMap:
-      management:
-        port: ${EXPOSED_PORT}
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+logging:
+  level:
+    com:
+      netflix:
+        discovery: OFF
+        eureka: OFF
+spring:
+  application:
+    name: eureka-server
