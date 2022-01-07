@@ -2,15 +2,15 @@ server:
   port: 8761
 
 eureka:
-  client:
-    fetch-registry: false
-    register-with-eureka: false
-logging:
-  level:
-    com:
-      netflix:
-        discovery: OFF
-        eureka: OFF
+  eurekaServer:
+    port: 80
+    domainName: eureka.example.com
+    context: eureka/v2
+  datacenter: cloud
+  shouldUseDns: true
+  region: us-east-1
+
 spring:
   application:
     name: eureka-server
+
