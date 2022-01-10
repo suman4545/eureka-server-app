@@ -1,9 +1,17 @@
-spring:
-  application:
-    name: swimming-pool-discovery-client
 server:
   port: 8761
+
 eureka:
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    fetch-registry: false
+    register-with-eureka: false
+logging:
+  level:
+    com:
+      netflix:
+        discovery: OFF
+        eureka: OFF
+spring:
+  application:
+    name: eureka-server
+
